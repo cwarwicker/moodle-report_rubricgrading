@@ -1,0 +1,51 @@
+<?php
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
+/**
+ * English language strings for report_rubricgrading.
+ *
+ * @package    report_rubricgrading
+ * @category   string
+ * @copyright  2025 Marcus Green
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
+defined('MOODLE_INTERNAL') || die();
+
+// Plugin.
+$string['pluginname']              = 'Rubric grading report';
+$string['rubricgrading:view']      = 'View rubric grading report';
+
+// Entities.
+$string['assignment']              = 'Assignment';
+$string['rubriccriterion']         = 'Rubric criterion';
+$string['student']                 = 'Student';
+$string['gradedby']                = 'Graded by';
+
+// Columns.
+$string['coursefullname']          = 'Course';
+$string['definition']              = 'Level definition';
+$string['feedback']                = 'Criterion feedback';
+$string['grade']                   = 'Grade';
+$string['gradingdefinition']       = 'Grading definition';
+$string['graderemail']             = 'Grader email';
+$string['graderfirstname']         = 'Grader first name';
+$string['graderlastname']          = 'Grader last name';
+$string['gradeoutof']              = 'Grade out of';
+$string['graderusername']          = 'Grader username';
+$string['overallfeedback']         = 'Overall feedback';
+$string['score']                   = 'Score';
+$string['timegraded']              = 'Time graded';
