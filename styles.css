@@ -1,0 +1,18 @@
+/**
+ * Styles for the rubric grading pivot report.
+ *
+ * @package    report_rubricgrading
+ * @copyright  2025 Marcus Green
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
+/* Group header row (Student | CriterionName… | Grade summary) */
+.rubricpivot-groupheader th {
+    border-bottom: 2px solid #dee2e6;
+}
+
+/* Align all cell content to the top of each row. */
+#rubricpivot-table-wrap td,
+#rubricpivot-table-wrap th {
+    vertical-align: top !important;
+}

@@ -38,7 +38,6 @@ use core_reportbuilder\local\report\filter;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class rubric_assignment extends base {
-
     /**
      * Database tables used by this entity.
      *
@@ -117,7 +116,7 @@ class rubric_assignment extends base {
             ->set_type(column::TYPE_FLOAT)
             ->add_field("{$ag}.grade")
             ->set_is_sortable(true)
-            ->add_callback(static function(?float $value): string {
+            ->add_callback(static function (?float $value): string {
                 if ($value === null) {
                     return '';
                 }
@@ -134,7 +133,7 @@ class rubric_assignment extends base {
             ->set_type(column::TYPE_FLOAT)
             ->add_field("{$asg}.grade")
             ->set_is_sortable(true)
-            ->add_callback(static function(?float $value): string {
+            ->add_callback(static function (?float $value): string {
                 if ($value === null || $value < 0) {
                     return '';
                 }

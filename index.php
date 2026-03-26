@@ -50,6 +50,8 @@ $returnurl = new moodle_url('/mod/assign/view.php', ['id' => $cmid]);
 $PAGE->navbar->add($cm->name, $returnurl);
 $PAGE->navbar->add(get_string('pluginname', 'report_rubricgrading'));
 
+$PAGE->requires->js_call_amd('report_rubricgrading/pivot_header', 'init');
+
 echo $OUTPUT->header();
 echo $OUTPUT->heading(get_string('pluginname', 'report_rubricgrading'));
 
@@ -62,6 +64,9 @@ $report = system_report_factory::create(
     ['cmid' => $cmid]
 );
 
+echo html_writer::tag('style', '#rubricpivot-table-wrap td, #rubricpivot-table-wrap th { vertical-align: top !important; }');
+echo html_writer::start_div('', ['id' => 'rubricpivot-table-wrap']);
 echo $report->output();
+echo html_writer::end_div();
 
 echo $OUTPUT->footer();

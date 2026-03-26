@@ -25,27 +25,23 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-// Plugin.
-$string['pluginname']              = 'Rubric grading report';
-$string['rubricgrading:view']      = 'View rubric grading report';
-
-// Entities.
-$string['assignment']              = 'Assignment';
-$string['rubriccriterion']         = 'Rubric criterion';
-$string['student']                 = 'Student';
-$string['gradedby']                = 'Graded by';
-
-// Columns.
-$string['coursefullname']          = 'Course';
-$string['definition']              = 'Level definition';
-$string['feedback']                = 'Criterion feedback';
-$string['grade']                   = 'Grade';
-$string['gradingdefinition']       = 'Grading definition';
-$string['graderemail']             = 'Grader email';
-$string['graderfirstname']         = 'Grader first name';
-$string['graderlastname']          = 'Grader last name';
-$string['gradeoutof']              = 'Grade out of';
-$string['graderusername']          = 'Grader username';
-$string['overallfeedback']         = 'Overall feedback';
-$string['score']                   = 'Score';
-$string['timegraded']              = 'Time graded';
+$string['assignment'] = 'Assignment';
+$string['coursefullname'] = 'Course';
+$string['criterioncolumn'] = '{$a->name} - {$a->col}';
+$string['definition'] = 'Level definition';
+$string['feedback'] = 'Criterion feedback';
+$string['grade'] = 'Grade';
+$string['gradedby'] = 'Graded by';
+$string['gradeoutof'] = 'Grade out of';
+$string['graderemail'] = 'Grader email';
+$string['graderfirstname'] = 'Grader first name';
+$string['graderlastname'] = 'Grader last name';
+$string['graderusername'] = 'Grader username';
+$string['gradingdefinition'] = 'Grading definition';
+$string['overallfeedback'] = 'Overall feedback';
+$string['pluginname'] = 'Rubric grading report';
+$string['rubriccriterion'] = 'Rubric criterion';
+$string['rubricgrading:view'] = 'View rubric grading report';
+$string['score'] = 'Score';
+$string['student'] = 'Student';
+$string['timegraded'] = 'Time graded';

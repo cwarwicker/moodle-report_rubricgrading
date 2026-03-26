@@ -38,7 +38,6 @@ use core_reportbuilder\local\report\filter;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class rubric_criterion extends base {
-
     /**
      * Database tables used by this entity.
      *
@@ -109,7 +108,7 @@ class rubric_criterion extends base {
             ->set_type(column::TYPE_FLOAT)
             ->add_field("{$level}.score")
             ->set_is_sortable(true)
-            ->add_callback(static function(?float $value): string {
+            ->add_callback(static function (?float $value): string {
                 if ($value === null) {
                     return '';
                 }

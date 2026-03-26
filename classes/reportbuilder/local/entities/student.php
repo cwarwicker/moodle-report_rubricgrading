@@ -36,7 +36,6 @@ use core_reportbuilder\local\report\filter;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class student extends base {
-
     /**
      * Database tables used by this entity.
      *
@@ -114,7 +113,7 @@ class student extends base {
             ->add_field("{$u}.middlename")
             ->add_field("{$u}.alternatename")
             ->set_is_sortable(true, ["{$u}.lastname", "{$u}.firstname"])
-            ->add_callback(static function(?string $value, stdClass $row): string {
+            ->add_callback(static function (?string $value, stdClass $row): string {
                 return fullname($row);
             });
 
