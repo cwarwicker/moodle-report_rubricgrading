@@ -274,7 +274,7 @@ class rubric_grading extends system_report {
             if ($n !== null) {
                 $pivotrows[$key]->{"crit{$n}_score"}   = $row->score !== null ? (float)$row->score : null;
                 $pivotrows[$key]->{"crit{$n}_remark"}  = $row->remark;
-                $pivotrows[$key]->{"crit{$n}_leveldef"} = (isset($row->leveldef)) ? $row->leveldef : false;
+                $pivotrows[$key]->{"crit{$n}_leveldef"} = $row->leveldef ?? null;
             }
         }
 
@@ -323,7 +323,7 @@ class rubric_grading extends system_report {
                     return $v !== null ? format_float($v, 2) : '';
                 }));
 
-            if (isset($criterion->leveldef)) {
+            if ($plugin->method_has_level_definitions()) {
                 $this->add_column((new column(
                     "crit{$n}_leveldef",
                     new lang_string(
@@ -410,8 +410,6 @@ class rubric_grading extends system_report {
                     ->set_is_sortable(false));
             }
         }
-
-//        $plugin->add_report_columns($this);
     }
 
     /**

@@ -85,6 +85,19 @@ abstract class plugin_base {
     }
 
     /**
+     * Whether the active grading method exposes a per-criterion "level definition"
+     * (rubric and ranged rubric do; marking guide does not).
+     *
+     * @return bool
+     */
+    public function method_has_level_definitions(): bool {
+        return in_array($this->gradingmanager->get_active_method(), [
+            'rubric',
+            'rubric_ranges',
+        ], true);
+    }
+
+    /**
      * Get the SQL for the temp table.
      * @return string
      */
