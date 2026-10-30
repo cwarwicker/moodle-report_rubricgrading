@@ -222,7 +222,10 @@ class rubric_grading extends system_report {
         $pivotrows = [];
         foreach ($rawrows as $row) {
             // Apply any extra fiddling we need to do to the data.
-            $plugin->fiddle($row);
+            $fiddle = $plugin->fiddle($row);
+            if (!$fiddle) {
+                continue;
+            }
             $key = $plugin->get_row_key($row);
             if (!isset($pivotrows[$key])) {
                 $studentobj = (object)[
@@ -246,14 +249,14 @@ class rubric_grading extends system_report {
                     'userid'            => (int)$row->userid,
                     'student_firstname' => $row->firstname,
                     'student_lastname'  => $row->lastname,
-                    'student_fullname'  => fullname($studentobj),
+                    'student_fullname'  => $row->fullname ?? fullname($studentobj),
                     'student_email'     => $row->email,
                     'student_username'  => $row->username,
                     'student_idnumber'  => $row->idnumber,
                     'grade'             => ($row->grade !== null && $row->grade >= 0) ? (float)$row->grade : null,
                     'gradeoutof'        => $row->gradeoutof !== null ? (float)$row->gradeoutof : null,
                     'overallfeedback'   => $row->overallfeedback,
-                    'grader_fullname'   => fullname($graderobj),
+                    'grader_fullname'   => $row->graderfullname ?? fullname($graderobj),
                     'timegraded'        => $row->timegraded !== null ? (int)$row->timegraded : null,
                 ];
 
@@ -279,7 +282,6 @@ class rubric_grading extends system_report {
                 $pivotrows[$key]->{"crit{$n}_leveldef"} = $row->leveldef ?? null;
             }
         }
-
         if (!empty($pivotrows)) {
             $DB->insert_records(self::TEMP_TABLE, array_values($pivotrows));
         }

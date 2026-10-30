@@ -170,9 +170,9 @@ abstract class plugin_base {
     /**
      * Apply any extra alterations we need to make to the data before it's converted to pivot table.
      * @param stdClass $row
+     * @return bool If the row should be included in the pivot table.
      */
-    public function fiddle(stdClass &$row): void {
-        // Override in plugin classes.
+    public function fiddle(stdClass &$row): bool {
+        return true;
     }
-
 }
