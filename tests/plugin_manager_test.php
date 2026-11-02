@@ -53,6 +53,15 @@ final class plugin_manager_test extends advanced_testcase {
         $this->assertInstanceOf(assign::class, $plugin);
     }
 
+    public function test_load_throws_for_missing_plugin_class(): void {
+        $this->resetAfterTest();
+
+        $cm = $this->get_cm_info('forum');
+
+        $plugin = plugin_manager::load($cm);
+        $this->assertNull($plugin);
+    }
+
     private function get_cm_info(string $modname): cm_info {
         $course = $this->getDataGenerator()->create_course();
         $module = $this->getDataGenerator()->create_module($modname, ['course' => $course->id]);

@@ -222,8 +222,8 @@ class rubric_grading extends system_report {
         $pivotrows = [];
         foreach ($rawrows as $row) {
             // Apply any extra fiddling we need to do to the data.
-            $fiddle = $plugin->fiddle($row);
-            if (!$fiddle) {
+            $result = $plugin->alter($row);
+            if (!$result) {
                 continue;
             }
             $key = $plugin->get_row_key($row);

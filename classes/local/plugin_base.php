@@ -172,7 +172,7 @@ abstract class plugin_base {
      * @param stdClass $row
      * @return bool If the row should be included in the pivot table.
      */
-    public function fiddle(stdClass &$row): bool {
+    public function alter(stdClass &$row): bool {
         return true;
     }
 }
