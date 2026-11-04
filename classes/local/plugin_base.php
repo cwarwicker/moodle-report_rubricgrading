@@ -25,6 +25,7 @@
 namespace report_rubricgrading\local;
 
 use cm_info;
+use core_reportbuilder\local\report\column;
 use grading_manager;
 use report_rubricgrading\reportbuilder\local\systemreports\rubric_grading;
 use stdClass;
@@ -174,5 +175,19 @@ abstract class plugin_base {
      */
     public function alter(stdClass &$row): bool {
         return true;
+    }
+
+    /**
+     * Allow the plugin to alter a core report column (add fields, callbacks, etc.).
+     *
+     * Any extra fields added must exist in the pivot table (see add_report_fields()).
+     *
+     * @param string $name Column name, e.g. 'grade'
+     * @param column $column The column object
+     * @param string $alias Pivot table alias
+     * @return bool True if the plugin has handled the column formatting, so the default callback is skipped
+     */
+    public function override_column(string $name, column $column, string $alias): bool {
+        return false;
     }
 }

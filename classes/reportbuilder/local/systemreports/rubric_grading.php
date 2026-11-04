@@ -310,8 +310,7 @@ class rubric_grading extends system_report {
         foreach ($criteria as $i => $criterion) {
             $n    = $i + 1;
             $desc = $criterion->description;
-
-            $this->add_column((new column(
+            $col = (new column(
                 "crit{$n}_score",
                 new lang_string(
                     'criterioncolumn',
@@ -322,10 +321,13 @@ class rubric_grading extends system_report {
             ))
                 ->add_field("{$alias}.crit{$n}_score")
                 ->set_type(column::TYPE_FLOAT)
-                ->set_is_sortable(false)
-                ->add_callback(static function (?float $v): string {
+                ->set_is_sortable(false);
+            if (!$plugin->override_column("crit{$n}_score", $col, $alias)) {
+                $col->add_callback(static function (?float $v): string {
                     return $v !== null ? format_float($v, 2) : '';
-                }));
+                });
+            }
+            $this->add_column($col);
 
             if ($plugin->method_has_level_definitions()) {
                 $this->add_column((new column(
@@ -367,17 +369,20 @@ class rubric_grading extends system_report {
             ->set_is_sortable(false));
 
         // 4. Grade.
-        $this->add_column((new column(
+        $gradecol = (new column(
             'grade',
             new lang_string('grade', 'report_rubricgrading'),
             self::ENTITY
         ))
             ->add_field("{$alias}.grade")
             ->set_type(column::TYPE_FLOAT)
-            ->set_is_sortable(false)
-            ->add_callback(static function (?float $v): string {
+            ->set_is_sortable(false);
+        if (!$plugin->override_column('grade', $gradecol, $alias)) {
+            $gradecol->add_callback(static function (?float $v): string {
                 return $v !== null ? format_float($v, 2) : '';
-            }));
+            });
+        }
+        $this->add_column($gradecol);
 
         // 5. Graded by.
         $this->add_column((new column(
